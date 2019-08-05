@@ -1,0 +1,34 @@
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        map<int,int>nu;
+        vector<int>v;
+        for(int i=0;i<nums.size();i++)
+        {
+            nu[i]=nums[i];
+        }
+        v.resize(nu.size());
+        for(int i=0;i<nu.size();i++)
+            for(int j=0;j<nums.size();j++)
+            {
+                if(nu[i]==nums[j])
+                {
+                    v[i]++;
+                }
+            }
+        int max_value;
+        int max=0;
+        for(int i=0;i<nu.size();i++)
+        {
+            if(v[i]>max)
+            {
+                max=v[i];
+                max_value=nu[i];
+            }
+        }
+        return max_value;
+       
+        
+        
+    }
+};

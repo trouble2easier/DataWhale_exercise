@@ -1,0 +1,69 @@
+class LineaStack
+//顺序栈
+{
+public:
+    LineaStack(){}
+	~LineaStack(){}
+	void push(char p);
+	char pop();
+	void createStack(String s);//用string创造stack；
+
+
+
+
+
+private:
+    char* root;
+	int top=0;
+	int maxsize=1000;
+}
+LineaStack()
+{
+   root=new char[maxsize];
+
+}
+~lineaStack()
+{
+    delete[] root;
+}
+LineaStack::void push(char p)//考虑越界
+{
+    if(top==maxsize-1)
+    {
+        char *p=new char[maxsize+1];
+        for(int i=0;i<maxsize;i++)
+        {
+            p[i]=root[i];
+
+
+        }
+        p[maxsize]=p;
+        delete[]root;
+        root=p;
+        top++;
+
+	}else {
+		root[top]=p;top++;
+	}
+}
+LineaStack::char pop()
+{
+    char q;
+	q=root[top];
+	top--;
+}
+LineaStack::void createStack(String s)//s的size会不会超过stack的maxsize
+{
+    if(s.length()<maxsize)
+    for(int i=0;i<s.length();i++)
+	{
+	    root[top]=char(s(i,i+1));
+		top++;
+	}
+	else{
+	char *s=new char[s.length()];
+	delete root;
+	root=s;
+	createStack(s);
+	}
+}

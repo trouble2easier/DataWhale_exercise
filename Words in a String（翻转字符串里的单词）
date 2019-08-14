@@ -1,0 +1,41 @@
+class Solution {
+public:
+    string reverseWords(string s)
+    {
+        stack<string> word;
+        string temp;
+        for(int i=0;i<s.length();i++)
+            {
+                if(s[i]==' ')
+                {
+                    if(temp.length())
+                    {
+                        word.push(temp);
+                        temp.clear();
+                    }
+                }
+                else
+                {
+                    temp=temp+s[i];
+                }
+                
+            
+        }
+        if(temp.length()) {
+            word.push(temp);
+            temp.clear();
+        }
+        while(!word.empty())
+        {
+            temp=temp+word.top();
+            word.pop();
+            if(word.size()>=1)
+                temp=temp+' ';
+            
+        }
+        return temp;
+
+        }
+};
+用时136ms
+内存269mb 打败5% 待修改

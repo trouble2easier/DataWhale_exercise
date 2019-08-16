@@ -1,0 +1,137 @@
+LRU缓存淘汰算法
+//LinkedHashmap 哈希表+双向链表
+template<class T>
+struct DlNode{
+ DLNode* frontNode;
+ DLNode* nextNode;
+ DLNode* next;
+ int data;
+
+}
+
+class LinkedHashMap
+{
+ public：
+ LinkHashMap();
+ ~LinkedHashMap();
+ DlNode*find(int k);
+ void delete(int k);
+ void insert(int k);
+ private:
+ DLNode**list;
+ int listsize;
+ int maxsize；
+ int div;
+}
+LinkedHashMap::LinkedHashMap()
+{
+   list=new DLNode*[listsize];
+   for(int i=0;i<n;i++)
+   {
+       list[i]=new DLNode[];
+   }
+}
+LinkedHashMap::~LinkedHashMap()
+{
+    for(int i=0;i<listsize;i++)
+	delete[] list[i];
+	delete[] list;
+}
+LinkedHashMap::DlNode*find(int k)
+{
+    int num=k/div;
+	DlNode*p=list[num];
+	while(p->next!=NULL&&p->data!=k)
+	{
+	   p=p->next;
+	}
+	return p;
+}
+LinkedHashMap::void delete(int k)
+{
+   DlNode *p=find(k)
+   DlNode*s=p->frontNode;
+   s->nextNode=p->nextNode;
+   p->nextNode->frontNode=s;
+   int num=k/div;
+   p=list[num];
+   while(p->next->data!=k)
+   {
+       p=p->next;
+   }
+   p->next=p->next->next;
+}
+LinkedHashMap::void insert(int k)
+{//尾插
+   DlNode*p=find(k);
+   if(p!=NULL)
+   { 
+	DlNode*q=p->frontNode;
+	q->nextNode=p->nextNode->nextNode;
+	p->nextNode->frontNode=p->frontNode;
+   while(q->next=NULL）
+   {
+        q=q->nextNode;
+   }
+   q->nextNode=p;
+   p->frontNode=q;
+   p->nextNode=NULL;
+   
+   }
+   else{
+   //判定缓存是否已满
+   int nodesize=0;
+   for(int i=0;i<listsize;i++)
+   {
+       DlNode* p=list[i];
+	   while(p->next!=NULL)
+	   {
+	      nodesize++;
+	   }
+   }
+   DlNode*p;
+   for(int i=0;i<listsize;i++)
+   {
+       p=list[i];
+	   if(p->next!=NULL)
+	   {
+	       p=p->next;
+		   break;
+	   }
+   }
+   if(nodesize==maxsize)
+   {
+      //缓存满，删除头部节点，并插入尾部
+	  while(p->frontNode!=NULL)
+	  {
+	   p=p->frontNode;
+	  }
+	  delete(p->data);
+	  while(p->nexNode!=NULL)
+	  {
+	   p=p->nextNode;
+	  }
+	  DlNode t=new DlNdode[];
+	  t->data=k;
+	  t->nextfront=NULL;
+	  t->frontNode=p;
+	  
+	  p->nextNode=t;
+	  
+   }
+   else{
+   //缓存未满，直接插入尾部
+   }
+        while(p->nextNode!=NULL)
+ 		{
+		     p=p->nextNode;
+		}
+	  DlNode t=new DlNdode[];
+	  t->data=k;
+	  t->nextfront=NULL;
+	  t->frontNode=p;
+	  
+	  p->nextNode=t;
+	  
+   }
+}

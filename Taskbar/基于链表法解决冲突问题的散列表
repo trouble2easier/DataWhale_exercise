@@ -1,0 +1,59 @@
+基于链表法解决冲突问题的散列表Struct Node
+{
+   int data;
+   Node* next;
+}
+class LinkedHash
+{
+public:
+LinekedHash();
+~LinekedHash();
+void insert(int k);
+Node*find(int k);
+private:
+  Node**list;
+  int size;
+  int div;
+  
+}
+LinkedHash::LinkedHash()
+{
+   list=new Node*[size];
+   for(int i=0;i<size;i++)
+   {
+      list[i]=new Node[];
+   }
+}
+LinkedHash::~LinkedHash()
+{
+    for(int i=0;i<size;i++)
+	{
+	    delete[] list[i];
+	}
+     delete[] list;
+}
+LinkedHash::void insert(int k)
+{
+     int num=k/div;
+	 Node*p=list[num]
+	 while(p->next!=NULL)
+	 {
+	     p=p->next;
+	 }
+	 DLNode q=new DLNode[];
+	 q.data=k;
+	 q.next=NULL;
+	 p->next=q;
+	 delete[] p;
+ 
+}
+LinkedHash::Node* find(int k)
+{
+     int num=k/div; 
+	 Node*p=list[num];
+	 while(p->next!=NULL&&p->data!=k)
+	 {
+	 p=p->next;
+	 }
+	 return p;
+}

@@ -1,0 +1,33 @@
+//trie树-字典树
+//常用于词频统计，字符串的快速查找，最长前缀匹配等问题以及相关变种问题。
+struct trieNode
+{
+    
+    trieNode* alpha[27];
+}
+class TrieTree
+{
+public:    
+    TrieTree(){ root=new trieNode();}
+	void Insert(char*word);
+	
+private:
+      trieNode*root	
+}
+TrieTree::void Insert(char*word)
+{
+	char*q=root;
+	while(*word)
+	{
+	if(q->alpha[*word-'a']==NULL)
+	{
+	    trieNode*r=new trieNode();
+		q->alpha[*word-'a']=r;
+		
+	}else
+	{
+	    q=q->alpha[*word-'a'];
+	}
+	word++;
+	}
+}

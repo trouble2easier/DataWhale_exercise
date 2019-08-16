@@ -1,0 +1,12 @@
+//朴素的字符串匹配算法
+void match(String s1,String s2,int& pos)
+{
+     pos=-1;
+    for(int i=0;i<s1.size()-s2.size();i++)
+	{
+	     if(s1(i,i+s1.size()==s2)
+		 return i;
+		 
+	}
+
+}
